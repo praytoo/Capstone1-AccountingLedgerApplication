@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TransactionFileManager {
@@ -29,7 +31,6 @@ public class TransactionFileManager {
             System.out.println("How much do you want to deposit?");
             amount = scanner.nextDouble();
             scanner.nextLine();
-            return false;
         }
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
@@ -41,7 +42,7 @@ public class TransactionFileManager {
         String dateString = date.format(dateFormatter);
         String timeString = time.format(timeFormatter);
 
-        String line = dateString + "|" + timeString + "|" + description + "|" + vendor + "|" + "$" + amount;
+        String line = dateString + "|" + timeString + "|" + description + "|" + vendor + "|" + amount;
         line = line + "\n";
         System.out.println(line);
 
@@ -69,7 +70,6 @@ public class TransactionFileManager {
             System.out.println("What is the amount of the payment you would like to debit?");
             amount = scanner.nextDouble();
             scanner.nextLine();
-            return false;
         }
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
@@ -82,7 +82,7 @@ public class TransactionFileManager {
         String timeString = time.format(timeFormatter);
 
         amount = -amount;
-        String line = dateString + "|" + timeString + "|" + description + "|" + vendor + "|" + "$" + amount;
+        String line = dateString + "|" + timeString + "|" + description + "|" + vendor + "|" + amount;
         line = line + "\n";
         System.out.println(line);
 
@@ -97,4 +97,27 @@ public class TransactionFileManager {
             return false;
         }
     }
+    public static List<Transaction> loadTransactions() {
+        List<Transaction> transactions = new ArrayList<>();
+        Path path = Paths.get("transactions.csv");
+
+        try {
+            List<String> lines = Files.readAllLines(path);
+            for (String line : lines) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 5) {
+                    LocalDate date = LocalDate.parse(parts[0]);
+                    LocalTime time = LocalTime.parse(parts[1]);
+                    Transaction t = new Transaction(date, time, parts[2], parts[3], Double.parseDouble(parts[4].replace("$", "").replace(",", "").trim()));
+
+                    transactions.add(t);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading transactions file: " + e.getMessage());
+        }
+
+        return transactions;
+    }
+
 }
