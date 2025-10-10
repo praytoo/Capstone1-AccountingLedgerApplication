@@ -10,7 +10,7 @@ public class Ledger {
         boolean endProgram = false;
         while(!endProgram) {
             endProgram = showHomeScreen();
-    }
+    }}
     public static boolean showHomeScreen(){
         String options = """
                 1) Add deposit
@@ -20,10 +20,10 @@ public class Ledger {
                 """;
             switch (getNumericChoice(options)) {
                 case 1:
-                    TransactionFileManager.addDeposit()();
+                    TransactionFileManager.addDeposit();
                     break;
                 case 2:
-                    TransactionFileManager.addPayment()();
+                    TransactionFileManager.addPayment();
                     break;
                 case 3:
                     Ledger.showLedger();
@@ -33,20 +33,8 @@ public class Ledger {
                 default:
                     System.out.println("That's not an option.");
                     break;
-            }   }
+            }
             return false;
-    }
-
-    public static boolean addDeposit() {
-        System.out.println("How much do you want to deposit?");
-        double amount = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.println("Who is the vendor?");
-        String vendor = scanner.nextLine();
-        System.out.println("What is the description of the deposit?");
-        String description = scanner.nextLine();
-
-        return false;
     }
 
     public static int getNumericChoice(String options) {
@@ -55,6 +43,9 @@ public class Ledger {
         int choice = scanner.nextInt();
         scanner.nextLine();
         return choice;
+    }
+    public static void showLedger(){
+
     }
 }
 
