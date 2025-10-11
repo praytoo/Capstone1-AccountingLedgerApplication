@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-import static com.pluralsight.LedgerApp.showHomeScreen;
+import static com.pluralsight.FinancialTrackerForPrince.showHomeScreen;
 
 public class Ledger {
     //Starts the app and runs the main menu loop
@@ -17,6 +17,8 @@ public class Ledger {
     public static boolean displayLedger() {
         List<Transaction> transactions = TransactionFileManager.loadTransactions();
         String options = """
+                PRINCE!
+                Would you like to view...
                 A) All
                 D) Deposits
                 P) Payments
@@ -39,11 +41,11 @@ public class Ledger {
             case "H":
                 showHomeScreen();
             case "X":
-                System.out.println("Goodbye!");
+                System.out.println("Goodbye Prince!");
                 System.exit(0);
                 break;
             default:
-                System.out.println("That's not an option.");
+                System.out.println("Prince, that's not an option.");
                 break;
         }
         return false;
@@ -53,6 +55,8 @@ public class Ledger {
         boolean stayInReports = true;
         while (stayInReports) {
             System.out.println("""
+                    PRINCE
+                    What reports would you like to see displayed?
                     1) Month To Date
                     2) Previous Month
                     3) Year To Date
@@ -85,7 +89,7 @@ public class Ledger {
                     stayInReports = false;
                     break;
                 default:
-                    System.out.println("That's not an option.");
+                    System.out.println("Prince, that's not an option.");
             }
         }
     }
@@ -98,6 +102,8 @@ public class Ledger {
         String amount2 = "";
 
         String options = """
+                PRINCE
+                What custom search would you like to make?
                 S) Start Date
                 E) End Date
                 D) Description
@@ -107,7 +113,7 @@ public class Ledger {
             String choice = getLetterChoice(options);
             switch (choice) {
                 case "S":
-                    System.out.println("Enter start date (yyyy-MM-dd) or press enter to skip");
+                    System.out.println("Prince, enter the start date (yyyy-MM-dd) or press enter to skip");
                     startdate2 = scanner.nextLine().trim();
                     String finalStartDate = startdate2;
                     List<Transaction> filteredByStartDate = transactions.stream()
@@ -116,7 +122,7 @@ public class Ledger {
                     printTransactions(filteredByStartDate);
                     break;
                 case "E":
-                    System.out.println("Enter end date (yyyy-MM-dd) or press enter to skip");
+                    System.out.println("Prince, enter the end date (yyyy-MM-dd) or press enter to skip");
                     enddate2 = scanner.nextLine().trim();
                     String finalEndDate = enddate2;
                     List<Transaction> filteredByEndDate = transactions.stream()
@@ -125,7 +131,7 @@ public class Ledger {
                     printTransactions(filteredByEndDate);
                     break;
                 case "D":
-                    System.out.println("Enter description or press enter to skip");
+                    System.out.println("Prince, enter the description or press enter to skip");
                     description2 = scanner.nextLine().trim();
                     String finalDescription = description2;
                     List<Transaction> filteredByDescription = transactions.stream()
@@ -134,7 +140,7 @@ public class Ledger {
                     printTransactions(filteredByDescription);
                     break;
                 case "V":
-                    System.out.println("Enter vendor or press enter to skip");
+                    System.out.println("Prince, enter the vendor name or press enter to skip");
                     vendor2 = scanner.nextLine().trim();
                     String finalVendor = vendor2;
                     List<Transaction> filteredByVendor = transactions.stream()
@@ -143,7 +149,7 @@ public class Ledger {
                     printTransactions(filteredByVendor);
                     break;
                 case "A":
-                    System.out.println("Enter amount or press enter to skip");
+                    System.out.println("Prince, enter the amount or press enter to skip");
                     amount2 = scanner.nextLine().trim();
                     String finalAmount = amount2;
                     List<Transaction> filteredByAmount = transactions.stream()
@@ -158,7 +164,7 @@ public class Ledger {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("That's not an option.");
+                    System.out.println("Prince, that's not an option.");
                     break;
             }
         }
@@ -223,9 +229,10 @@ public class Ledger {
 
     private static void printTransactions(List<Transaction> transactions) {
         if (transactions.isEmpty()) {
-            System.out.println("No matching transactions found.");
+            System.out.println("Prince, there are no matching transactions found.");
             return;
         }
+        System.out.println("                        WELCOME PRINCE                               ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
@@ -246,7 +253,7 @@ public class Ledger {
         try {
             lines = Files.readAllLines(path);
         } catch (IOException e) {
-            System.out.println("No transaction file found yet" + e.getMessage());
+            System.out.println("Prince, there is no transaction file found yet" + e.getMessage());
             return;
         }
         List<Transaction> transactions = new ArrayList<>();
@@ -269,9 +276,10 @@ public class Ledger {
                         .reversed()
         );
         if (lines.isEmpty()) {
-            System.out.println("No transactions found.");
+            System.out.println("Prince, there are no transactions found.");
             return;
         }
+        System.out.println("                        WELCOME PRINCE                               ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {

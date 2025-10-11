@@ -2,7 +2,7 @@ package com.pluralsight;
 
 import java.util.Scanner;
 
-public class LedgerApp {
+public class FinancialTrackerForPrince {
     static Scanner scanner = new Scanner(System.in);
 
     //Handles ledger display, reports, and filtering logic
@@ -13,6 +13,8 @@ public class LedgerApp {
         }}
     public static boolean showHomeScreen(){
         String options = """
+                WELCOME PRINCE
+                Would you like to...
                 D) Add deposit
                 P) Make Payment
                 L) Ledger
@@ -31,7 +33,7 @@ public class LedgerApp {
             case "X":
                 return true;
             default:
-                System.out.println("That's not an option.");
+                System.out.println("Prince, that's not an option.");
                 break;
         }
         return false;
