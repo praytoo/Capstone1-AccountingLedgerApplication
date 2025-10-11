@@ -237,7 +237,7 @@ public class Ledger {
             System.out.println("Prince, there are no matching transactions found.");
             return;
         }
-        System.out.println("             WELCOME PRINCE: HERE'S THIS MONTH'S FINANCES            ");
+        System.out.println("               WELCOME PRINCE: HERE ARE YOUR FINANCES                ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
@@ -284,7 +284,7 @@ public class Ledger {
             System.out.println("Prince, there are no transactions found.");
             return;
         }
-        System.out.println("             WELCOME PRINCE: HERE'S THIS MONTH'S FINANCES            ");
+        System.out.println("               WELCOME PRINCE: HERE ARE YOUR FINANCES                ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
