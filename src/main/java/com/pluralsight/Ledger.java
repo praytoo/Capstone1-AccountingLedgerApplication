@@ -55,7 +55,7 @@ public class Ledger {
         boolean stayInReports = true;
         while (stayInReports) {
             System.out.println("""
-                    PRINCE
+                    PRINCE!
                     What reports would you like to see displayed?
                     1) Month To Date
                     2) Previous Month
@@ -102,7 +102,7 @@ public class Ledger {
         String amount2 = "";
 
         String options = """
-                PRINCE
+                PRINCE!
                 What custom search would you like to make?
                 S) Start Date
                 E) End Date
@@ -232,7 +232,7 @@ public class Ledger {
             System.out.println("Prince, there are no matching transactions found.");
             return;
         }
-        System.out.println("                        WELCOME PRINCE                               ");
+        System.out.println("             WELCOME PRINCE: HERE'S THIS MONTH'S FINANCES            ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
@@ -279,7 +279,7 @@ public class Ledger {
             System.out.println("Prince, there are no transactions found.");
             return;
         }
-        System.out.println("                        WELCOME PRINCE                               ");
+        System.out.println("             WELCOME PRINCE: HERE'S THIS MONTH'S FINANCES            ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {

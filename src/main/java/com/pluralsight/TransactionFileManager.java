@@ -20,16 +20,16 @@ public class TransactionFileManager {
     static Scanner scanner = new Scanner(System.in);
     //Handles reading/writing to transactions.csv
     public static boolean addDeposit() {
-        System.out.println("How much do you want to deposit?");
+        System.out.println("Prince, how much do you want to deposit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
-        System.out.println("Who is the vendor?");
+        System.out.println("Prince, who is the vendor?");
         String vendor = scanner.nextLine();
-        System.out.println("What is the description of the deposit?");
+        System.out.println("Prince, what is the description of the deposit?");
         String description = scanner.nextLine();
         while (amount <= 0) {
-            System.out.println("Invalid amount, please enter a positive number");
-            System.out.println("How much do you want to deposit?");
+            System.out.println("Prince, invalid amount, please enter a positive number");
+            System.out.println("Prince, how much do you want to deposit?");
             amount = scanner.nextDouble();
             scanner.nextLine();
         }
@@ -51,7 +51,7 @@ public class TransactionFileManager {
         Charset charset = StandardCharsets.UTF_8;
         try (BufferedWriter writer = Files.newBufferedWriter(path, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             writer.write(line);
-            System.out.println("Deposit successfully recorded!");
+            System.out.println("Prince! your deposit was successfully recorded!");
             return true;
         } catch (IOException e) {
             System.out.println("Error writing to file." + e.getMessage());
@@ -59,16 +59,16 @@ public class TransactionFileManager {
         }
     }
     public static boolean addPayment(){
-        System.out.println("What is the amount of the payment you would like to debit?");
+        System.out.println("Prince, what is the amount of the payment you would like to debit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
-        System.out.println("Who is the vendor?");
+        System.out.println("Prince, who is the vendor?");
         String vendor = scanner.nextLine();
-        System.out.println("What is the description of the payment?");
+        System.out.println("Prince, what is the description of the payment?");
         String description = scanner.nextLine();
         while (amount <= 0) {
-            System.out.println("Invalid amount, please enter a positive number");
-            System.out.println("What is the amount of the payment you would like to debit?");
+            System.out.println("Prince, invalid amount, please enter a positive number");
+            System.out.println("Prince, what is the amount of the payment you would like to debit?");
             amount = scanner.nextDouble();
             scanner.nextLine();
         }
@@ -91,7 +91,7 @@ public class TransactionFileManager {
         Charset charset = StandardCharsets.UTF_8;
         try (BufferedWriter writer = Files.newBufferedWriter(path, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             writer.write(line);
-            System.out.println("Debit successfully recorded!");
+            System.out.println("Prince! Your debit was successfully recorded!");
             return true;
         } catch (IOException e) {
             System.out.println("Error writing to file." + e.getMessage());
