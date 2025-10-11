@@ -11,6 +11,7 @@ public class Transaction {
     private String vendor;
     private double amount;
 
+    //tells application how to format transactions
     @Override
     public String toString() {
         return "Transaction{" +
@@ -22,6 +23,7 @@ public class Transaction {
                 '}';
     }
 
+    //getters setters
     public LocalDate getDate() {
         return date;
     }
@@ -62,6 +64,7 @@ public class Transaction {
         this.amount = amount;
     }
 
+    //constructor
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;

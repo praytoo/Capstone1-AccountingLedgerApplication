@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 public class TransactionFileManager {
     static Scanner scanner = new Scanner(System.in);
+
     //Handles reading/writing to transactions.csv
     public static boolean addDeposit() {
         System.out.println("Prince, how much do you want to deposit?");
@@ -58,7 +59,8 @@ public class TransactionFileManager {
             return false;
         }
     }
-    public static boolean addPayment(){
+
+    public static boolean addPayment() {
         System.out.println("Prince, what is the amount of the payment you would like to debit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -98,6 +100,7 @@ public class TransactionFileManager {
             return false;
         }
     }
+
     public static List<Transaction> loadTransactions() {
         List<Transaction> transactions = new ArrayList<>();
         Path path = Paths.get("transactions.csv");
@@ -117,11 +120,11 @@ public class TransactionFileManager {
         } catch (IOException e) {
             System.out.println("Error reading transactions file: " + e.getMessage());
         }
-transactions.sort(
-        Comparator.comparing(Transaction::getDate)
-                .thenComparing(Transaction::getTime)
-                .reversed()
-);
+        transactions.sort(
+                Comparator.comparing(Transaction::getDate)
+                        .thenComparing(Transaction::getTime)
+                        .reversed()
+        );
         return transactions;
     }
 
