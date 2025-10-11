@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -151,7 +152,6 @@ public class Ledger {
                         .filter(t -> (vendor.isEmpty() || t.getVendor().toLowerCase().contains(vendor.toLowerCase())))
                         .filter(t -> (amount.isEmpty() || t.getAmount() == Double.parseDouble(amount)))
                         .toList();
-
                 printTransactions(customSearch);
         }
     }
@@ -197,7 +197,6 @@ public class Ledger {
         List<Transaction> filtered = transactions.stream()
                 .filter(t -> t.getVendor().toLowerCase().contains(vendorName))
                 .toList();
-
         printTransactions(filtered);
     }
 
