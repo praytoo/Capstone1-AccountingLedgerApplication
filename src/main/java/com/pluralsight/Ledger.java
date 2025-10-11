@@ -5,9 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalTime;
+import java.util.*;
 
 import static com.pluralsight.LedgerApp.showHomeScreen;
 
@@ -242,21 +241,33 @@ public class Ledger {
             System.out.println("No transaction file found yet" + e.getMessage());
             return;
         }
+        List<Transaction> transactions = new ArrayList<>();
+        for (String line : lines) {
+            if (line.trim().isEmpty()) continue;
+            String[] parts = line.split("\\|");
+            if (parts.length == 5) {
+                LocalDate date = LocalDate.parse(parts[0]);
+                LocalTime time = LocalTime.parse(parts[1]);
+                String description = parts[2];
+                String vendor = parts[3];
+                double amount = Double.parseDouble(parts[4].replace("$", "").replace(",", "").trim());
+
+                transactions.add(new Transaction(date, time, description, vendor, amount));
+            }
+        }
+        transactions.sort(
+                Comparator.comparing(Transaction::getDate)
+                        .thenComparing(Transaction::getTime)
+                        .reversed()
+        );
         if (lines.isEmpty()) {
             System.out.println("No transactions found.");
             return;
         }
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
-        for (String line : lines) {
-            if (line.trim().isEmpty()) continue;
-            String[] parts = line.split("\\|");
-            if (parts.length == 5) {
+        for (Transaction t : transactions) {
                 System.out.printf("%-12s %-10s %-20s %-15s %s%n",
-                        parts[0], parts[1], parts[2], parts[3], parts[4]);
-            }
+                        t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());            }
         }
-
-
     }
-}

@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -116,7 +117,11 @@ public class TransactionFileManager {
         } catch (IOException e) {
             System.out.println("Error reading transactions file: " + e.getMessage());
         }
-
+transactions.sort(
+        Comparator.comparing(Transaction::getDate)
+                .thenComparing(Transaction::getTime)
+                .reversed()
+);
         return transactions;
     }
 
