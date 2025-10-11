@@ -82,7 +82,7 @@ public class Ledger {
                     customSearch(transactions);
                     break;
                 case "0":
-                    stayInReports = false; // go back to Ledger
+                    stayInReports = false;
                     break;
                 default:
                     System.out.println("That's not an option.");
@@ -104,30 +104,52 @@ public class Ledger {
                 V) Vendor
                 A) Amount
                 """;
-
-        boolean done = false;
-        while (!done) {
             String choice = getLetterChoice(options);
             switch (choice) {
                 case "S":
                     System.out.println("Enter start date (yyyy-MM-dd) or press enter to skip");
                     startdate2 = scanner.nextLine().trim();
+                    String finalStartDate = startdate2;
+                    List<Transaction> filteredByStartDate = transactions.stream()
+                            .filter(t -> (finalStartDate.isEmpty() || t.getDate().isEqual(LocalDate.parse(finalStartDate))))
+                            .toList();
+                    printTransactions(filteredByStartDate);
                     break;
                 case "E":
                     System.out.println("Enter end date (yyyy-MM-dd) or press enter to skip");
                     enddate2 = scanner.nextLine().trim();
+                    String finalEndDate = enddate2;
+                    List<Transaction> filteredByEndDate = transactions.stream()
+                            .filter(t -> (finalEndDate.isEmpty() || t.getDate().isEqual(LocalDate.parse(finalEndDate))))
+                            .toList();
+                    printTransactions(filteredByEndDate);
                     break;
                 case "D":
                     System.out.println("Enter description or press enter to skip");
                     description2 = scanner.nextLine().trim();
+                    String finalDescription = description2;
+                    List<Transaction> filteredByDescription = transactions.stream()
+                            .filter(t -> (finalDescription.isEmpty() || t.getDescription().toLowerCase().contains(finalDescription.toLowerCase())))
+                            .toList();
+                    printTransactions(filteredByDescription);
                     break;
                 case "V":
                     System.out.println("Enter vendor or press enter to skip");
                     vendor2 = scanner.nextLine().trim();
+                    String finalVendor = vendor2;
+                    List<Transaction> filteredByVendor = transactions.stream()
+                            .filter(t -> (finalVendor.isEmpty() || t.getVendor().equalsIgnoreCase(finalVendor)))
+                            .toList();
+                    printTransactions(filteredByVendor);
                     break;
                 case "A":
                     System.out.println("Enter amount or press enter to skip");
                     amount2 = scanner.nextLine().trim();
+                    String finalAmount = amount2;
+                    List<Transaction> filteredByAmount = transactions.stream()
+                            .filter(t -> (finalAmount.isEmpty() || t.getAmount() == Double.parseDouble(finalAmount)))
+                            .toList();
+                    printTransactions(filteredByAmount);
                     break;
                 case "H":
                     showHomeScreen();
@@ -139,21 +161,7 @@ public class Ledger {
                     System.out.println("That's not an option.");
                     break;
             }
-            final String startdate = "";
-            final String enddate = "";
-            final String description = "";
-            final String vendor = "";
-            final String amount = "";
-                List<Transaction> customSearch = transactions.stream()
-                        .filter(t -> (startdate.isEmpty() || !t.getDate().isBefore(LocalDate.parse(startdate))))
-                        .filter(t -> (enddate.isEmpty() || !t.getDate().isAfter(LocalDate.parse(enddate))))
-                        .filter(t -> (description.isEmpty() || t.getDescription().toLowerCase().contains(description.toLowerCase())))
-                        .filter(t -> (vendor.isEmpty() || t.getVendor().toLowerCase().contains(vendor.toLowerCase())))
-                        .filter(t -> (amount.isEmpty() || t.getAmount() == Double.parseDouble(amount)))
-                        .toList();
-                printTransactions(customSearch);
         }
-    }
 
     public static void showMonthToDate(List<Transaction> transactions) {
         LocalDate now = LocalDate.now();
