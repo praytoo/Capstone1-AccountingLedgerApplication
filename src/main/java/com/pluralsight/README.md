@@ -258,5 +258,5 @@ Van Putten, M. (2025, October 10). *Java In Class Workshop* [Workshop review]. Y
 
 OpenAI. (2025). *ChatGPT (GPT-5)* [Large language model]. https://chat.openai.com/
 
-> *Note:* Parts of this project were influenced by Tracy Adewunmi’s feedback during review sessions, concepts from Maaike van Putten’s in class Workshop, and example logic generated with assistance from ChatGPT (GPT-5).
+> *Note:* Parts of this project were influenced by Tracy Adewunmi’s feedback during review sessions, concepts from Maaike Van Putten’s in class Workshop, and example logic generated with assistance from ChatGPT (GPT-5).
 
