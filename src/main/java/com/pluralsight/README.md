@@ -14,6 +14,7 @@ This application tracks deposits, payments, and generates reports for personal o
 - [⚙️ Features](#️-features)
 - [📋 Requirements](#-requirements)
 - [📦 Installation](#-installation)
+- [🧩 Functions](#-functions)
 - [💡 Interesting Code](#-interesting-code)
 - [👤 Author](#-author)
 - [📜 License](#-license)
@@ -182,6 +183,90 @@ Clone the repository from GitHub:
 git clone https://github.com/praytoo/Capstone1-AccountingLedgerApplication.git
 cd Capstone1-AccountingLedgerApplication
 ```
+🧩 Functions
+---
+
+This project is built around four main classes — each handling a specific responsibility in the application’s logic.  
+The diagram below shows how data and commands flow between them.
+
+![UML Diagram](Diagram.png)
+
+---
+
+### 🏠 **FinancialTrackerForPrince**
+The main driver of the program — handles user input from the **home menu** and directs to the correct functions.
+
+- **main(args: String[])** — Launches the app and loops until the user exits.
+- **showHomeScreen(): boolean** — Displays the welcome menu with options: Add Deposit, Make Payment, Ledger, or Exit.
+- **getLetterChoice(options: String): String** — Handles user input and returns their selection for all menus.
+
+🧭 *Navigation:*  
+`showHomeScreen()` connects to `Ledger.displayLedger()` and `TransactionFileManager` methods.
+
+---
+
+### 📘 **Ledger**
+Manages all **ledger-related views and reports**.  
+This class reads transaction data, filters it, and prints financial records in organized tables.
+
+- **displayLedger(): boolean** — Displays the Ledger menu (All, Deposits, Payments, Reports, or Home).
+- **displayReports(List<Transaction>)** — Opens the Reports submenu (Month-to-Date, Previous Month, etc.).
+- **customSearch(List<Transaction>)** — Lets the user search transactions by date, vendor, or amount.
+- **showMonthToDate() / showPreviousMonth() / showYearToDate() / showPreviousYear()** — Filter transactions by date ranges.
+- **searchByVendor(List<Transaction>)** — Finds all transactions for a given vendor.
+- **displayDeposits() / displayPayments()** — Show only deposits or payments.
+- **printTransactions(List<Transaction>)** — Prints transactions in a formatted table with columns (Date, Time, Description, Vendor, Amount).
+- **showLedger()** — Displays all transactions chronologically.
+- **getLetterChoice(options: String)** — Reused from the Home Screen to capture user selections.
+
+📈 *Interaction:*  
+Ledger methods call `TransactionFileManager.loadTransactions()` to retrieve CSV data.
+
+---
+
+### 💾 **TransactionFileManager**
+Handles **file input/output (I/O)** — reading and writing all transactions to the CSV file.
+
+- **addDeposit(): boolean** — Prompts the user to enter deposit details, formats data, and appends it to `transactions.csv`.
+- **addPayment(): boolean** — Similar to deposits but records payments as negative values.
+- **loadTransactions(): List<Transaction>** — Reads all CSV entries, converts each into a `Transaction` object, and sorts by date/time.
+
+📂 *Interaction:*  
+Creates and reads transaction data shared with both the `Ledger` and `FinancialTrackerForPrince` classes.
+
+---
+
+### 💰 **Transaction**
+The **data model** for every financial entry (an individual deposit or payment).
+
+**Attributes:**
+- `date: LocalDate`
+- `time: LocalTime`
+- `description: String`
+- `vendor: String`
+- `amount: double`
+
+**Methods:**
+- Standard getters and setters (`getDate()`, `setAmount()`, etc.)
+- **toString()** — Returns a readable string of the transaction.
+- **Transaction(...)** — Constructor that initializes all transaction fields.
+
+🧩 *Purpose:*  
+Encapsulates each financial record so the Ledger and File Manager can interact with transaction data consistently.
+
+---
+
+### 🔄 **Overall Flow Summary**
+
+1. The user starts at the **Home Screen** (`FinancialTrackerForPrince.showHomeScreen()`).
+2. Choosing “Ledger” runs **`Ledger.displayLedger()`**, which loads data via `TransactionFileManager.loadTransactions()`.
+3. The **Ledger** filters and prints transactions or generates reports.
+4. **Transaction** objects hold all financial record details.
+5. The user can loop back to the home screen anytime, maintaining smooth navigation.
+
+---
+
+
 💡 Interesting Code
 ---
 
