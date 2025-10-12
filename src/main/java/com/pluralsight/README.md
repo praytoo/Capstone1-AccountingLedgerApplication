@@ -104,11 +104,12 @@ H) Home
     return false;
 }
 ```
+![Custom Search](showCustomSearch.png)
+![Custom Search2](showCustomSearch2.png)
+
+
 👉 **GitHub Repository:**  
 [Capstone1-AccountingLedgerApplication](https://github.com/praytoo/Capstone1-AccountingLedgerApplication)
-
-![Home screen](showHomeScreen.png)
-![Ledger screen](displayLedger.png)
 
 ---
 
