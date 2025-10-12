@@ -1,0 +1,28 @@
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Build output directories
+out/
+target/
+bin/
+
+# Compiled class files
+*.class
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Project-specific data files
+transactions.csv
+
+# Backup files
+*~
+
+# Optional: exclude packaged jars (if you build any)
+*.jar
