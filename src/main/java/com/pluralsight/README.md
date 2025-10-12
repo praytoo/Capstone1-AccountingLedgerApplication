@@ -18,18 +18,97 @@ This application tracks deposits, payments, and generates reports for personal o
 
 ---
 
-## Project Demo
-> **Demo Overview:**  
-> The application launches with a custom welcome screen (“Welcome Prince”) and allows you to:
-> - Add deposits or payments
-> - View the ledger by category (All, Deposits, Payments)
-> - Generate reports (month-to-date, previous month, year-to-date, previous year)
-> - Run custom searches across multiple filters
+🎬 Demo Overview
+---
 
+The application launches with a custom welcome screen (**“Welcome Prince”**) and allows you to:
+
+- 💵 **Add deposits or payments**
+- 📊 **View the ledger by category** — All, Deposits, or Payments
+- 🧾 **Generate reports** — Month-to-Date, Previous Month, Year-to-Date, or Previous Year
+- 🔍 **Run custom searches** across multiple filters
+
+```java
+// In FinancialTrackerForPrince.java
+
+public static boolean showHomeScreen() {
+    String options = """
+            WELCOME PRINCE
+            Would you like to...
+            D) Add deposit
+            P) Make Payment
+            L) Ledger
+            X) Exit
+            """;
+
+    switch (getLetterChoice(options)) {
+        case "D":
+            TransactionFileManager.addDeposit();
+            break;
+        case "P":
+            TransactionFileManager.addPayment();
+            break;
+        case "L":
+            Ledger.displayLedger();
+            break;
+        case "X":
+            return true;
+        default:
+            System.out.println("Prince, that's not an option.");
+            break;
+    }
+    return false;
+}
+```
+
+```java
+
+// In Ledger.java
+
+// Displays the ledger options and runs the main ledger menu
+public static boolean displayLedger() {
+List<Transaction> transactions = TransactionFileManager.loadTransactions();
+String options = """
+PRINCE!
+Would you like to view...
+A) All
+D) Deposits
+P) Payments
+R) Reports
+H) Home
+""";
+
+    switch (getLetterChoice(options)) {
+        case "A":
+            showLedger();
+            break;
+        case "D":
+            displayDeposits(transactions);
+            break;
+        case "P":
+            displayPayments(transactions);
+            break;
+        case "R":
+            displayReports(transactions);
+            break;
+        case "H":
+            showHomeScreen();
+        case "X":
+            System.out.println("Goodbye Prince!");
+            System.exit(0);
+            break;
+        default:
+            System.out.println("Prince, that's not an option.");
+            break;
+    }
+    return false;
+}
+```
 👉 **GitHub Repository:**  
 [Capstone1-AccountingLedgerApplication](https://github.com/praytoo/Capstone1-AccountingLedgerApplication)
 
-![Ledger screen](images/displayledger.png)
+![Home screen](showHomeScreen.png)
+![Ledger screen](displayLedger.png)
 
 ---
 
