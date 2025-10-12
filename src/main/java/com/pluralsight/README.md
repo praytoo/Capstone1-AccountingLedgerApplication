@@ -254,7 +254,7 @@ See the [LICENSE](LICENSE) file for details.
 
 Adewunmi, T. (2025). *Capstone project guidance and review* [Instructional feedback].
 
-van Putten, M. (2025, October 10). *Java In Class Workshop* [Workshop review]. Year Up United.
+Van Putten, M. (2025, October 10). *Java In Class Workshop* [Workshop review]. Year Up United.
 
 OpenAI. (2025). *ChatGPT (GPT-5)* [Large language model]. https://chat.openai.com/
 
