@@ -7,14 +7,16 @@ This application tracks deposits, payments, and generates reports for personal o
 
 ---
 
-## Table of Contents
-- [Project Demo](#project-demo)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Interesting Code](#interesting-code)
-- [Author](#author)
-- [License](#license)
+ 📚 Table of Contents
+---
+
+- [🎬 Demo Overview](#-demo-overview)
+- [⚙️ Features](#️-features)
+- [📋 Requirements](#-requirements)
+- [📦 Installation](#-installation)
+- [💡 Interesting Code](#-interesting-code)
+- [👤 Author](#-author)
+- [📜 License](#-license)
 
 ---
 
