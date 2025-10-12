@@ -17,6 +17,7 @@ This application tracks deposits, payments, and generates reports for personal o
 - [💡 Interesting Code](#-interesting-code)
 - [👤 Author](#-author)
 - [📜 License](#-license)
+- [📚 References](#-references)
 
 ---
 
@@ -213,7 +214,8 @@ private static void printTransactions(List<Transaction> transactions) {
     }
 }
 ```
-🧠 Why It’s Interesting
+🧠 Why It’s Interesting:
+---
 
 Prints my name in a personalized way
 
@@ -247,4 +249,14 @@ DATE         TIME       DESCRIPTION          VENDOR          AMOUNT
 This project is open-source and free to use under the terms of the MIT License.  
 See the [LICENSE](LICENSE) file for details.
 
+📚 References
+---
+
+Adewunmi, T. (2025). *Capstone project guidance and review* [Instructional feedback].
+
+van Putten, M. (2025, October 10). *Java In Class Workshop* [Workshop review]. Year Up United.
+
+OpenAI. (2025). *ChatGPT (GPT-5)* [Large language model]. https://chat.openai.com/
+
+> *Note:* Parts of this project were influenced by Tracy Adewunmi’s feedback during review sessions, concepts from Maaike van Putten’s in class Workshop, and example logic generated with assistance from ChatGPT (GPT-5).
 
