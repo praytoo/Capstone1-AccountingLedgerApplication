@@ -20,7 +20,7 @@ public class TransactionFileManager {
     static Scanner scanner = new Scanner(System.in);
 
     //Recording transactions
-    private static boolean recordTransaction(double amount, String vendor, String description, boolean isDeposit){
+    public static boolean recordTransaction(double amount, String vendor, String description, boolean isDeposit){
         if (!isDeposit){
             amount = -amount;
         }LocalDate date = LocalDate.now();
