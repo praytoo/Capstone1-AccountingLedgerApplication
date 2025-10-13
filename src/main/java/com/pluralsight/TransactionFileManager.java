@@ -111,5 +111,9 @@ public class TransactionFileManager {
         );
         return transactions;
     }
+    public static boolean addTransaction(double amount, String vendor, String description, boolean isDeposit) {
+        boolean result = recordTransaction(amount, vendor, description, isDeposit);
+        return result;
+    }
 }
 
