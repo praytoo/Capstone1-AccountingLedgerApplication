@@ -321,9 +321,8 @@ DATE         TIME       DESCRIPTION          VENDOR          AMOUNT
 2025-10-10   15:02:43   Invoice 1001 paid    Year Up United  4500.00
 ```
 ---
-```
-💻Ledger GUI
-```
+## 💻Ledger GUI
+
 
 Prince's Ledger now comes with a **graphical user interface (GUI)** built using Java Swing. This makes managing deposits, payments, and viewing your transactions much easier and more interactive.
 
