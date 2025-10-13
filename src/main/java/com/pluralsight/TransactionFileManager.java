@@ -52,7 +52,7 @@ public class TransactionFileManager {
             return false;
         }
     }
-    public static boolean isDeposit(){
+    public static boolean addDeposit(){
         System.out.println("Prince, how much do you want to deposit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -68,7 +68,7 @@ public class TransactionFileManager {
         }
         return recordTransaction(amount, vendor, description, true);
     }
-    public static boolean isPayment() {
+    public static boolean addPayment() {
         System.out.println("Prince, what is the amount of the payment you would like to debit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
