@@ -255,7 +255,7 @@ The **data model** for every financial entry (an individual deposit or payment).
 Encapsulates each financial record so the Ledger and File Manager can interact with transaction data consistently.
 
 ---
-![GIF](GIF.mp4)
+![GIF](GIF.gif)
 ---
 
 ### 🔄 **Overall Flow Summary**
