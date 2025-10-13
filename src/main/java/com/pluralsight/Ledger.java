@@ -41,6 +41,7 @@ public class Ledger {
                 break;
             case "H":
                 showHomeScreen();
+                break;
             case "X":
                 System.out.println("Goodbye Prince!");
                 System.exit(0);

@@ -19,8 +19,40 @@ import java.util.Scanner;
 public class TransactionFileManager {
     static Scanner scanner = new Scanner(System.in);
 
-    //Handles reading/writing to transactions.csv
-    public static boolean addDeposit() {
+    //Recording transactions
+    private static boolean recordTransaction(double amount, String vendor, String description, boolean isDeposit){
+        if (!isDeposit){
+            amount = -amount;
+        }LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        date.format(dateFormatter);
+        time.format(timeFormatter);
+
+        String dateString = date.format(dateFormatter);
+        String timeString = time.format(timeFormatter);
+
+        String line = dateString + "|" + timeString + "|" + description + "|" + vendor + "|" + amount;
+        line = line + "\n";
+        System.out.println(line);
+
+        Path path = Paths.get("transactions.csv");
+        Charset charset = StandardCharsets.UTF_8;
+        try (BufferedWriter writer = Files.newBufferedWriter(path, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+            writer.write(line);
+            if (isDeposit) {
+                System.out.println("Prince! your deposit was successfully recorded!");
+            }else {
+                System.out.println("Prince! your payment was successfully recorded!");
+            }
+            return true;
+        } catch (IOException e) {
+            System.out.println("Error writing to file." + e.getMessage());
+            return false;
+        }
+    }
+    public static boolean isDeposit(){
         System.out.println("Prince, how much do you want to deposit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -34,33 +66,9 @@ public class TransactionFileManager {
             amount = scanner.nextDouble();
             scanner.nextLine();
         }
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        date.format(dateFormatter);
-        time.format(timeFormatter);
-
-        String dateString = date.format(dateFormatter);
-        String timeString = time.format(timeFormatter);
-
-        String line = dateString + "|" + timeString + "|" + description + "|" + vendor + "|" + amount;
-        line = line + "\n";
-        System.out.println(line);
-
-        Path path = Paths.get("transactions.csv");
-        Charset charset = StandardCharsets.UTF_8;
-        try (BufferedWriter writer = Files.newBufferedWriter(path, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
-            writer.write(line);
-            System.out.println("Prince! your deposit was successfully recorded!");
-            return true;
-        } catch (IOException e) {
-            System.out.println("Error writing to file." + e.getMessage());
-            return false;
-        }
+        return recordTransaction(amount, vendor, description, true);
     }
-
-    public static boolean addPayment() {
+    public static boolean isPayment() {
         System.out.println("Prince, what is the amount of the payment you would like to debit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -74,31 +82,7 @@ public class TransactionFileManager {
             amount = scanner.nextDouble();
             scanner.nextLine();
         }
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        date.format(dateFormatter);
-        time.format(timeFormatter);
-
-        String dateString = date.format(dateFormatter);
-        String timeString = time.format(timeFormatter);
-
-        amount = -amount;
-        String line = dateString + "|" + timeString + "|" + description + "|" + vendor + "|" + amount;
-        line = line + "\n";
-        System.out.println(line);
-
-        Path path = Paths.get("transactions.csv");
-        Charset charset = StandardCharsets.UTF_8;
-        try (BufferedWriter writer = Files.newBufferedWriter(path, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
-            writer.write(line);
-            System.out.println("Prince! Your debit was successfully recorded!");
-            return true;
-        } catch (IOException e) {
-            System.out.println("Error writing to file." + e.getMessage());
-            return false;
-        }
+        return recordTransaction(amount, vendor, description, false);
     }
 
     public static List<Transaction> loadTransactions() {
@@ -127,5 +111,5 @@ public class TransactionFileManager {
         );
         return transactions;
     }
-
 }
+
