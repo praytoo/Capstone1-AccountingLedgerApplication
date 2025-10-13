@@ -16,6 +16,7 @@ This application tracks deposits, payments, and generates reports for personal o
 - [📦 Installation](#-installation)
 - [🧩 Functions](#-functions)
 - [💡 Interesting Code](#-interesting-code)
+- [💻 Ledger GUI](#ledger-gui)
 - [👤 Author](#-author)
 - [📜 License](#-license)
 - [📚 References](#-references)
@@ -319,6 +320,28 @@ DATE         TIME       DESCRIPTION          VENDOR          AMOUNT
 2025-10-10   15:05:35   Gym membership       Equinox         -250.00
 2025-10-10   15:02:43   Invoice 1001 paid    Year Up United  4500.00
 ```
+---
+```
+💻Ledger GUI
+```
+
+Prince's Ledger now comes with a **graphical user interface (GUI)** built using Java Swing. This makes managing deposits, payments, and viewing your transactions much easier and more interactive.
+
+### Features
+
+- **Add Deposit**: Record a deposit directly through a dialog box.
+- **Add Payment**: Record a payment directly through a dialog box.
+- **Refresh Ledger**: View all transactions in a scrollable text area.
+- Transactions are displayed in **chronological order** with columns for Date, Time, Description, Vendor, and Amount.
+
+![GIF2](images/GIF2.gif)
+
+### Usage
+
+1. Run the `LedgerGUI` class.
+2. Use the buttons at the top to add deposits or payments.
+3. Click **Refresh Ledger** to see all recorded transactions.
+
 ---
 
 ## 👤 Author
