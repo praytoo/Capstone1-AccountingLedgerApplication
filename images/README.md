@@ -1,6 +1,6 @@
 # 💰 Accounting Ledger — Financial Tracker For Prince
 
-**A command-line accounting ledger application built in Java**  
+**A command-line and graphical user interface accounting ledger application built in Java**  
 Created as **Capstone Project 1** for *Learn To Code Academy*.
 
 This application tracks deposits, payments, and generates reports for personal or business use — all stored in a local `transactions.csv` file.
