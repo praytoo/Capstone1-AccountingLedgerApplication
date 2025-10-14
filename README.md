@@ -139,13 +139,14 @@ H) Home
 ## 📋 Requirements
 
 ### Home Screen
-The home screen should give the user the following options.  
-The application should continue to run until the user chooses to exit.
-
+The home screen should give the user the following options:
 - `D)` **Add Deposit** — Prompt user for deposit info and save to CSV
 - `P)` **Make Payment (Debit)** — Prompt user for debit info and save to CSV
 - `L)` **Ledger** — Display the ledger screen
 - `X)` **Exit** — Exit the application
+
+The application should continue to run until the user chooses to exit.
+
 
 ### Ledger Screen
 All entries should show the newest entries first.
