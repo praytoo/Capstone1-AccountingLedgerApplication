@@ -38,7 +38,7 @@ public class LedgerGUI {
         JScrollPane scrollPane = new JScrollPane(ledgerArea);
         frame.add(scrollPane, BorderLayout.CENTER);
 
-        // Button action listeners
+        // Button action listeners for add deposit add payment and refresh ledger
 
         // Add Deposit
         addDepositButton.addActionListener(e -> {

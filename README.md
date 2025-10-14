@@ -109,8 +109,8 @@ H) Home
     return false;
 }
 ```
-![Custom Search](showCustomSearch.png)
-![Custom Search2](showCustomSearch2.png)
+![Custom Search](images/showCustomSearch.png)
+![Custom Search2](images/showCustomSearch2.png)
 
 
 👉 **GitHub Repository:**  
@@ -190,7 +190,7 @@ cd Capstone1-AccountingLedgerApplication
 This project is built around four main classes — each handling a specific responsibility in the application’s logic.  
 The diagram below shows how data and commands flow between them.
 
-![UML Diagram](Diagram.png)
+![UML Diagram](images/Diagram.png)
 
 ---
 
@@ -256,7 +256,7 @@ The **data model** for every financial entry (an individual deposit or payment).
 Encapsulates each financial record so the Ledger and File Manager can interact with transaction data consistently.
 
 ---
-![GIF](GIF.gif)
+![GIF](images/GIF.gif)
 ---
 
 ### 🔄 **Overall Flow Summary**
