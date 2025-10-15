@@ -250,7 +250,7 @@ public class Ledger {
     public static String getLetterChoice(String options) {
         System.out.println(options);
         String choice = scanner.nextLine();
-            return choice;
+            return choice.toUpperCase();
     }
 //in charge of displaying full ledger in chronological order
     public static void showLedger() {
