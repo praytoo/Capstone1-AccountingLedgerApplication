@@ -249,24 +249,8 @@ public class Ledger {
 //handles case choice
     public static String getLetterChoice(String options) {
         System.out.println(options);
-        String choice = scanner.nextLine().trim();
-        if (choice.equalsIgnoreCase("A")){
-        }else if (choice.equalsIgnoreCase("D")){
-        }else if (choice.equalsIgnoreCase("P")){
-        }else if (choice.equalsIgnoreCase("R")){
-        }else if (choice.equalsIgnoreCase("H")){
-        }else if (choice.equalsIgnoreCase("X")) {
-        }else if (choice.equals("1")) {
-        }else if (choice.equals("2")){
-        }else if (choice.equals("3")){
-        }else if (choice.equals("4")){
-        }else if (choice.equals("5")){
-        }else if (choice.equals("6")){
-        }else if (choice.equals("0")){
-        }else if (choice.equalsIgnoreCase("S")){
-        }else if (choice.equalsIgnoreCase("E")){
-        }else if (choice.equalsIgnoreCase("V"));
-        return choice;
+        String choice = scanner.nextLine();
+            return choice;
     }
 //in charge of displaying full ledger in chronological order
     public static void showLedger() {
