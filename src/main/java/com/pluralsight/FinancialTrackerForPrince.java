@@ -2,6 +2,10 @@ package com.pluralsight;
 
 import java.util.Scanner;
 
+import static com.pluralsight.Ledger.showLedger;
+import static com.pluralsight.TransactionFileManager.addDeposit;
+import static com.pluralsight.TransactionFileManager.addPayment;
+
 public class FinancialTrackerForPrince {
     //Handles home screen display
     static Scanner scanner = new Scanner(System.in);
@@ -25,10 +29,10 @@ public class FinancialTrackerForPrince {
                 """;
         switch (getLetterChoice(options)) {
             case "D":
-                TransactionFileManager.addDeposit();
+                addDeposit();
                 break;
             case "P":
-                TransactionFileManager.addPayment();
+                addPayment();
                 break;
             case "L":
                 Ledger.displayLedger();
@@ -45,7 +49,18 @@ public class FinancialTrackerForPrince {
 //handles case choice
     public static String getLetterChoice(String options) {
         System.out.println(options);
-        String choice = scanner.nextLine();
+        String choice = scanner.nextLine().trim();
+        if(choice.equalsIgnoreCase("D")){
+            TransactionFileManager.addDeposit();
+            showHomeScreen();
+        }else if (choice.equalsIgnoreCase("P")){
+            TransactionFileManager.addPayment();
+            showHomeScreen();
+        }else if (choice.equalsIgnoreCase("L")){
+            Ledger.showLedger();
+            showHomeScreen();
+        }else if (choice.equalsIgnoreCase("X"));
+        System.exit(0);
         return choice;
     }
 }
