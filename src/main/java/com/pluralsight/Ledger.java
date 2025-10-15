@@ -182,6 +182,7 @@ public class Ledger {
                 .toList();
         printTransactions(filtered);
     }
+
     //shows previous month option in ledger reports
     public static void showPreviousMonth(List<Transaction> transactions) {
         LocalDate now = LocalDate.now().minusMonths(1);
@@ -191,6 +192,7 @@ public class Ledger {
                 .toList();
         printTransactions(filtered);
     }
+
     //shows year to date option in ledger reports
     public static void showYearToDate(List<Transaction> transactions) {
         int currentYear = LocalDate.now().getYear();
@@ -199,6 +201,7 @@ public class Ledger {
                 .toList();
         printTransactions(filtered);
     }
+
     //shows previous year option in ledger reports
     public static void showPreviousYear(List<Transaction> transactions) {
         int lastYear = LocalDate.now().getYear() - 1;
@@ -207,7 +210,8 @@ public class Ledger {
                 .toList();
         printTransactions(filtered);
     }
-//allows search by vendor by filtering
+
+    //allows search by vendor by filtering
     public static void searchByVendor(List<Transaction> transactions) {
         System.out.print("Enter vendor name: ");
         String vendorName = scanner.nextLine().trim().toLowerCase();
@@ -217,14 +221,16 @@ public class Ledger {
                 .toList();
         printTransactions(filtered);
     }
-//displays deposits
+
+    //displays deposits
     public static void displayDeposits(List<Transaction> transactions) {
         List<Transaction> deposits = transactions.stream()
                 .filter(t -> t.getAmount() > 0)
                 .toList();
         printTransactions(deposits);
     }
-//displays payments
+
+    //displays payments
     public static void displayPayments(List<Transaction> transactions) {
         List<Transaction> payments = transactions.stream()
                 .filter(t -> t.getAmount() < 0)
@@ -246,13 +252,15 @@ public class Ledger {
                     t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
         }
     }
-//handles case choice
+
+    //handles case choice
     public static String getLetterChoice(String options) {
         System.out.println(options);
         String choice = scanner.nextLine();
-            return choice.toUpperCase();
+        return choice.toUpperCase();
     }
-//in charge of displaying full ledger in chronological order
+
+    //in charge of displaying full ledger in chronological order
     public static void showLedger() {
         Path path = Paths.get("transactions.csv");
         List<String> lines = null;

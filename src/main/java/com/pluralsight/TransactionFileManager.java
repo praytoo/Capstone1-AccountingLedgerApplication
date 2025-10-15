@@ -20,10 +20,11 @@ public class TransactionFileManager {
     static Scanner scanner = new Scanner(System.in);
 
     //Recording transactions
-    public static boolean recordTransaction(double amount, String vendor, String description, boolean isDeposit){
-        if (!isDeposit){
+    public static boolean recordTransaction(double amount, String vendor, String description, boolean isDeposit) {
+        if (!isDeposit) {
             amount = -amount;
-        }LocalDate date = LocalDate.now();
+        }
+        LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -43,7 +44,7 @@ public class TransactionFileManager {
             writer.write(line);
             if (isDeposit) {
                 System.out.println("Prince! your deposit was successfully recorded!");
-            }else {
+            } else {
                 System.out.println("Prince! your payment was successfully recorded!");
             }
             return true;
@@ -52,7 +53,8 @@ public class TransactionFileManager {
             return false;
         }
     }
-    public static boolean addDeposit(){
+
+    public static boolean addDeposit() {
         System.out.println("Prince, how much do you want to deposit?");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -68,6 +70,7 @@ public class TransactionFileManager {
         }
         return recordTransaction(amount, vendor, description, true);
     }
+
     public static boolean addPayment() {
         System.out.println("Prince, what is the amount of the payment you would like to debit?");
         double amount = scanner.nextDouble();
@@ -111,6 +114,7 @@ public class TransactionFileManager {
         );
         return transactions;
     }
+
     public static boolean addTransaction(double amount, String vendor, String description, boolean isDeposit) {
         boolean result = recordTransaction(amount, vendor, description, isDeposit);
         return result;

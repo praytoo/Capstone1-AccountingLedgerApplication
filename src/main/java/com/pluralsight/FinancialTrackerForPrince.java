@@ -17,7 +17,8 @@ public class FinancialTrackerForPrince {
             endProgram = showHomeScreen();
         }
     }
-// home screen menu
+
+    // home screen menu
     public static boolean showHomeScreen() {
         String options = """
                 WELCOME PRINCE
@@ -46,7 +47,7 @@ public class FinancialTrackerForPrince {
         return false;
     }
 
-//handles case choice
+    //handles case choice
     public static String getLetterChoice(String options) {
         System.out.println(options);
         String choice = scanner.nextLine();

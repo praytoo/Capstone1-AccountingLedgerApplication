@@ -44,23 +44,23 @@ public class LedgerGUI {
         addDepositButton.addActionListener(e -> {
             try {
                 String amountStr = JOptionPane.showInputDialog(frame, "Enter deposit amount:");
-                if(amountStr == null) return; // user canceled
+                if (amountStr == null) return; // user canceled
                 double amount = Double.parseDouble(amountStr);
-                while(amount <= 0) {
+                while (amount <= 0) {
                     amountStr = JOptionPane.showInputDialog(frame, "Invalid amount. Enter a positive number:");
-                    if(amountStr == null) return;
+                    if (amountStr == null) return;
                     amount = Double.parseDouble(amountStr);
                 }
 
                 String vendor = JOptionPane.showInputDialog(frame, "Enter vendor:");
-                if(vendor == null) return;
+                if (vendor == null) return;
                 String description = JOptionPane.showInputDialog(frame, "Enter description:");
-                if(description == null) return;
+                if (description == null) return;
 
                 TransactionFileManager.recordTransaction(amount, vendor, description, true);
                 JOptionPane.showMessageDialog(frame, "Deposit recorded successfully!");
                 refreshLedger();
-            } catch(NumberFormatException ex) {
+            } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(frame, "Invalid number entered.");
             }
         });
@@ -69,23 +69,23 @@ public class LedgerGUI {
         addPaymentButton.addActionListener(e -> {
             try {
                 String amountStr = JOptionPane.showInputDialog(frame, "Enter payment amount:");
-                if(amountStr == null) return;
+                if (amountStr == null) return;
                 double amount = Double.parseDouble(amountStr);
-                while(amount <= 0) {
+                while (amount <= 0) {
                     amountStr = JOptionPane.showInputDialog(frame, "Invalid amount. Enter a positive number:");
-                    if(amountStr == null) return;
+                    if (amountStr == null) return;
                     amount = Double.parseDouble(amountStr);
                 }
 
                 String vendor = JOptionPane.showInputDialog(frame, "Enter vendor:");
-                if(vendor == null) return;
+                if (vendor == null) return;
                 String description = JOptionPane.showInputDialog(frame, "Enter description:");
-                if(description == null) return;
+                if (description == null) return;
 
                 TransactionFileManager.recordTransaction(amount, vendor, description, false);
                 JOptionPane.showMessageDialog(frame, "Payment recorded successfully!");
                 refreshLedger();
-            } catch(NumberFormatException ex) {
+            } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(frame, "Invalid number entered.");
             }
         });
