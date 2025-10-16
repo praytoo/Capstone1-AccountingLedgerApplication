@@ -244,12 +244,19 @@ public class Ledger {
             System.out.println("Prince, there are no matching transactions found.");
             return;
         }
+        //making payments red and deposits green
+        final String RED = "\u001B[31m";
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+
         System.out.println("               WELCOME PRINCE: HERE ARE YOUR FINANCES                ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
-            System.out.printf("%-12s %-10s %-20s %-15s %.2f%n",
-                    t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+            double amount = t.getAmount();
+            String color = amount < 0 ? RED : GREEN; // ternary makes payments red and deposits green
+            System.out.printf("%-12s %-10s %-20s %-15s %s$%.2f%s%n",
+                    t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), color, t.getAmount(), RESET);
         }
     }
 
@@ -293,12 +300,19 @@ public class Ledger {
             System.out.println("Prince, there are no transactions found.");
             return;
         }
+        //making payments red and deposits green
+        final String RED = "\u001B[31m";
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+
         System.out.println("               WELCOME PRINCE: HERE ARE YOUR FINANCES                ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
-            System.out.printf("%-12s %-10s %-20s %-15s %s%n",
-                    t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+            double amount = t.getAmount();
+            String color = amount < 0 ? RED : GREEN; // ternary makes payments red and deposits green
+            System.out.printf("%-12s %-10s %-20s %-15s %s$%.2f%s%n",
+                    t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), color, t.getAmount(), RESET);
         }
     }
 }

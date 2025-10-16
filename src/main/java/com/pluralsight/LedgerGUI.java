@@ -6,7 +6,7 @@ import java.util.List;
 
 public class LedgerGUI {
 
-    private JTextArea ledgerArea;
+    private JEditorPane ledgerArea;
     private JFrame frame;
 
     public LedgerGUI() {
@@ -33,8 +33,9 @@ public class LedgerGUI {
         frame.add(topPanel, BorderLayout.NORTH);
 
         // Ledger display area
-        ledgerArea = new JTextArea();
+        ledgerArea = new JEditorPane();
         ledgerArea.setEditable(false);
+        ledgerArea.setContentType("text/html"); // enable colored HTML output because ANSI escape codes can't be read
         JScrollPane scrollPane = new JScrollPane(ledgerArea);
         frame.add(scrollPane, BorderLayout.CENTER);
 
@@ -100,20 +101,26 @@ public class LedgerGUI {
     // Refresh ledger display
     private void refreshLedger() {
         List<Transaction> transactions = TransactionFileManager.loadTransactions();
-        ledgerArea.setText("");
+        StringBuilder html = new StringBuilder();
+        html.append("<html><body style='font-family: monospace;'>");
 
         if (transactions.isEmpty()) {
-            ledgerArea.setText("No transactions found.");
+            html.append("<p>No transactions found.</p>");
         } else {
-            ledgerArea.append(String.format("%-12s %-10s %-20s %-15s %s%n",
-                    "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT"));
-            ledgerArea.append("------------------------------------------------------------------------------------------------\n");
+            html.append("<pre>DATE         TIME       DESCRIPTION           VENDOR           AMOUNT</pre>");
+            html.append("<pre>--------------------------------------------------------------------------</pre>");
 
             for (Transaction t : transactions) {
-                ledgerArea.append(String.format("%-12s %-10s %-20s %-15s %.2f%n",
-                        t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount()));
+                double amount = t.getAmount();
+                String color = amount < 0 ? "red" : "green"; // ternary makes payments red and deposits green
+                html.append(String.format(
+                        "<pre>%-12s %-10s %-20s %-15s <font color='%s'>$%.2f</font></pre>",
+                        t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), color, amount));
             }
+            html.append("</pre>");
         }
+        html.append("</body></html>");
+        ledgerArea.setText(html.toString());
     }
 
     public static void main(String[] args) {
