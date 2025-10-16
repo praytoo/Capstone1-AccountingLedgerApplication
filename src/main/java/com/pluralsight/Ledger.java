@@ -249,15 +249,20 @@ public class Ledger {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
 
+        double total = 0;
+
         System.out.println("               WELCOME PRINCE: HERE ARE YOUR FINANCES                ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
             double amount = t.getAmount();
+            total += amount;
             String color = amount < 0 ? RED : GREEN; // ternary makes payments red and deposits green
             System.out.printf("%-12s %-10s %-20s %-15s %s$%.2f%s%n",
                     t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), color, t.getAmount(), RESET);
         }
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.printf("TOTAL BALANCE: $%.2f%n", total);
     }
 
     //handles case choice
@@ -305,14 +310,19 @@ public class Ledger {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
 
+        double total = 0; // total
+
         System.out.println("               WELCOME PRINCE: HERE ARE YOUR FINANCES                ");
         System.out.println("DATE         TIME       DESCRIPTION           VENDOR           AMOUNT");
         System.out.println("--------------------------------------------------------------------------");
         for (Transaction t : transactions) {
             double amount = t.getAmount();
+            total += amount;
             String color = amount < 0 ? RED : GREEN; // ternary makes payments red and deposits green
             System.out.printf("%-12s %-10s %-20s %-15s %s$%.2f%s%n",
                     t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), color, t.getAmount(), RESET);
         }
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.printf("TOTAL BALANCE: $%.2f%n", total);
     }
 }

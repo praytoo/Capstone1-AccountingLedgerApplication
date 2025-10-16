@@ -104,6 +104,8 @@ public class LedgerGUI {
         StringBuilder html = new StringBuilder();
         html.append("<html><body style='font-family: monospace;'>");
 
+        double total = 0;
+
         if (transactions.isEmpty()) {
             html.append("<p>No transactions found.</p>");
         } else {
@@ -112,11 +114,15 @@ public class LedgerGUI {
 
             for (Transaction t : transactions) {
                 double amount = t.getAmount();
+                total += amount;
                 String color = amount < 0 ? "red" : "green"; // ternary makes payments red and deposits green
                 html.append(String.format(
                         "<pre>%-12s %-10s %-20s %-15s <font color='%s'>$%.2f</font></pre>",
                         t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), color, amount));
             }
+            html.append(String.format(
+                    "<pre><b>TOTAL BALANCE: $%.2f</b></pre>", total));
+
             html.append("</pre>");
         }
         html.append("</body></html>");
