@@ -30,10 +30,10 @@ public class FinancialTrackerForPrince {
                 """;
         switch (getLetterChoice(options)) {
             case "D":
-                addDeposit();
+                TransactionFileManager.addDeposit();
                 break;
             case "P":
-                addPayment();
+                TransactionFileManager.addPayment();
                 break;
             case "L":
                 Ledger.displayLedger();
